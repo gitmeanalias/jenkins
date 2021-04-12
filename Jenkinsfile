@@ -33,8 +33,7 @@ pipeline {
             agent { label 'slave' }
             steps {
                 sh 'docker ps -f name=first-repo -q | xargs --no-run-if-empty docker container stop'
-                sh 'docker ps | docker images'
-                sh 'docker system prune -a -y'
+                sh 'docker ps | docker images --digests | xargs --no-run-if-empty docker images rmi
             }
         }
                 
