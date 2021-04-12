@@ -34,7 +34,7 @@ pipeline {
             steps {
                 sh 'docker ps -f name=first-repo -q | xargs --no-run-if-empty docker container stop'
                 sh 'docker ps | docker images'
-                sh 'docker system prune -a'
+                sh 'docker system prune -a -y'
             }
         }
                 
