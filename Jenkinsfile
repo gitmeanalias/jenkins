@@ -44,7 +44,7 @@ pipeline {
             steps {
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                     sh "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin ${env.ECR_URL}"
-                    sh "docker run -d -p 80:3000 --rm --name first-repo ${env.ECR_URL}/first-repo:latest"
+                    sh "docker run -d -p 80:3000 --name first-repo ${env.ECR_URL}/first-repo:latest"
              }
             }
         }
