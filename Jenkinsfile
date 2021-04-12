@@ -21,7 +21,7 @@ pipeline {
             }
         }
         
-        stage('Pushing Docker image to ECR...') {
+        stage('Pushing Docker image to AWS ECR...') {
             steps {
                 sh 'docker build -t first-repo:latest .'
                 sh "docker tag first-repo:latest ${env.ECR_URL}/first-repo:latest"
