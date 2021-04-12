@@ -22,6 +22,12 @@ pipeline {
             }
         }
         
+        stage('Cleaning ECR images...') {
+            steps {
+                sh 'aws ecr batch-delete-image --repository-name first-repo --image-ids imageTag=latest'
+            }
+        }
+        
         stage('Pushing Docker image to ECR...') {
             steps {
                 sh 'docker build -t first-repo:latest .'
