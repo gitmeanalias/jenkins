@@ -34,6 +34,7 @@ pipeline {
             steps {
                 sh 'docker ps -f name=first-repo -q | xargs --no-run-if-empty docker container stop'
                 sh 'docker container ls -a -f name=first-repo -q | xargs -r docker container rm'
+                sh 'docker rmi $(docker images -q)'
             }
         }
                 
