@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-    res.send("<h1 style="color: orange;">Welcome guys, I say hello!! from Jenkins and ngrok</h1>")
+    res.send("<h1 style="color: red;">Welcome guys, I say hello!! from Jenkins and ngrok</h1>")
 });
 
 app.get('/name/:myname', (req, res) => {
