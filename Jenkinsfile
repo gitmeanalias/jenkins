@@ -33,7 +33,7 @@ pipeline {
             agent { label 'slave' }
             steps {
                 sh 'docker ps -f name=first-repo -q | xargs --no-run-if-empty docker container stop'
-                sh 'docker images | xargs --no-run-if-empty docker rmi'
+                sh 'docker container ls -a -f name=first-repo -q | xargs -r docker container rm'
             }
         }
                 
