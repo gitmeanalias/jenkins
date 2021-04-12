@@ -16,7 +16,7 @@ pipeline {
         stage('Cleaning ECR...') {
             steps {
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-                    sh "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin ${env.ECR_URL} | xargs aws ecr batch-delete-image --repository-name first-repo imageTag=latest"
+                    sh "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin ${env.ECR_URL} | xargs aws ecr list-images --repository-name first-repo | xargs aws ecr batch-delete-image"
                 } 
             }
         }
