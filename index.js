@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-    res.send("<h1>Hello fellas, how's it going? I say hello! from Jenkins and ngrok</h1>")
+    res.send("<h1 style="color: orange;">Welcome guys, I say hello!! from Jenkins and ngrok</h1>")
 });
 
 app.get('/name/:myname', (req, res) => {
