@@ -24,7 +24,10 @@ pipeline {
         
         stage('Cleaning ECR images...') {
             steps {
-                sh 'aws ecr batch-delete-image --repository-name first-repo --image-ids imageTag=latest'
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                	
+                    sh 'aws ecr batch-delete-image --repository-name first-repo --image-ids imageTag=latest'
+                }
             }
         }
         
